@@ -12,9 +12,9 @@
             "sytou\\test\\": "src"
         }
     },
-    "scripts": {
-        "post-update-cmd": [
-            "php artisan package:discover"
-        ]
+    "extra": {
+        "laravel": {
+            "providers":"sytou\\test\\TestServiceProvider"
+        }
     }
 }
