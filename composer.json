@@ -1,0 +1,13 @@
+{
+    "name": "sytou/test",
+    "description": "First Plugin",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "sytou\\test\\": "src"
+        }
+    }
+}
