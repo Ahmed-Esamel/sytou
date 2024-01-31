@@ -3,6 +3,7 @@
 namespace sytou\test;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Artisan;
 
 class TestServiceProvider extends ServiceProvider
 {
@@ -11,16 +12,16 @@ class TestServiceProvider extends ServiceProvider
         // تحميل ملفات التوجيه (Routes)
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
-        // تحميل المهام (Migrations)
-        $this->loadMigrationsFrom(__DIR__.'/Migrations');
+        // تحميل المهام (Migrations) ونشرها فقط عند تثبيت الحزمة
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__.'/Migrations');
+
+            // تنفيذ التحديثات تلقائياً
+            Artisan::call('migrate', ['--path' => 'vendor/sytou/test/src/Migrations']);
+        }
 
         // تحميل المشاهدات (Views)
         $this->loadViewsFrom(__DIR__.'/views', 'sytou/test');
-
-        // نشر المهام (Publish Migrations)
-        $this->publishes([
-            __DIR__.'/Migrations' => database_path('migrations')
-        ], 'slug-migrations');
     }
 
     public function register()

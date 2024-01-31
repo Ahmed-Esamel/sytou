@@ -14,7 +14,15 @@
     },
     "extra": {
         "laravel": {
-            "providers":"sytou\\test\\TestServiceProvider"
-        }
+            "providers": [
+                "sytou\\test\\TestServiceProvider"
+            ]
+        },
+        "post-install-cmd": [
+            "@php artisan migrate --path=vendor/sytou/test/src/Migrations"
+        ],
+        "post-update-cmd": [
+            "@php artisan migrate --path=vendor/sytou/test/src/Migrations"
+        ]
     }
 }
