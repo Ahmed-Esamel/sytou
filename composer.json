@@ -1,0 +1,20 @@
+{
+    "name": "sytou/test",
+    "description": "First Plugin",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "sytou\\test\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers":"sytou\\test\\TestServiceProvider"
+        }
+    }
+}
